@@ -23,7 +23,7 @@ This library provides the core MVC wrapper infrastructure from the DNN Platform 
 
 ## Installation
 
-### Option 1: Binary Reference
+### Option 1: Binary Reference (not yet)
 
 1. Download the latest release DLL from the releases page
 2. Copy `DotNetNuke.Web.MvcWrapper.dll` to your DNN site's `bin` folder
@@ -31,7 +31,7 @@ This library provides the core MVC wrapper infrastructure from the DNN Platform 
 
 The library will automatically register all `IMvcModuleControl` implementations with DNN's dependency injection container through the `Startup` class (if your DNN 9.x version supports `IDnnStartup`).
 
-### Option 2: NuGet Package (if available)
+### Option 2: NuGet Package (not yet)
 
 ```powershell
 Install-Package DotNetNuke.Web.MvcWrapper
