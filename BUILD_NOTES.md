@@ -18,7 +18,6 @@ DotNetNuke.Web.MvcWrapper/
         ├── Properties/
         │   └── AssemblyInfo.cs
         ├── Startup.cs
-        ├── DnnMvcWrapperDependencyResolver.cs
         ├── Extensions/
         │   └── StartupExtensions.cs
         ├── ModuleControl/
@@ -35,8 +34,7 @@ DotNetNuke.Web.MvcWrapper/
         │   │   └── PageConfigurationContext.cs
         │   ├── RazorModuleControlBase.cs
         │   ├── DefaultMvcModuleControlBase.cs
-        │   ├── IMvcModuleControl.cs
-        │   └── ModuleControlFactory.cs
+        │   └── IMvcModuleControl.cs
         ├── Utils/
         │   ├── MvcViewEngine.cs
         │   ├── EmptyController.cs
@@ -62,54 +60,9 @@ DotNetNuke.Web.MvcWrapper/
 11. ✅ Created MIT LICENSE file
 12. ✅ Added Startup.cs for IDnnStartup integration
 13. ✅ Added StartupExtensions.cs for IMvcModuleControl registration
-14. ✅ Added DnnMvcWrapperDependencyResolver for MVC DI integration
 
 ## Build Status
 
-### Current Issue
-
-NuGet package restoration is failing due to network/proxy configuration:
-
-```
-error NU1301: Impossible d'obtenir les informations de signature du dépôt
-Connection refused to 127.0.0.1:9
-```
-
-This appears to be a local environment issue with NuGet proxy settings, not a problem with the project configuration.
-
-### To Build Successfully
-
-**Option 1: Fix NuGet Configuration**
-
-Check your NuGet.config file (usually in `%APPDATA%\NuGet\NuGet.Config`) and ensure proxy settings are correct or disabled:
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <config>
-    <add key="http_proxy" value="" />
-    <add key="http_proxy.user" value="" />
-    <add key="http_proxy.password" value="" />
-  </config>
-</configuration>
-```
-
-**Option 2: Restore Packages Manually**
-
-1. Open the solution in Visual Studio 2022
-2. Right-click on the solution in Solution Explorer
-3. Select "Restore NuGet Packages"
-4. Build the solution (Ctrl+Shift+B)
-
-**Option 3: Use Package Manager Console**
-
-In Visual Studio, open Tools > NuGet Package Manager > Package Manager Console and run:
-
-```powershell
-Update-Package -reinstall -ProjectName DotNetNuke.Web.MvcWrapper
-```
-
-## Required NuGet Packages
 
 The project requires the following packages (specified in .csproj):
 
@@ -123,27 +76,15 @@ The project requires the following packages (specified in .csproj):
 
 ## Code Modifications Made
 
-### Removed SPA Module Support
-
-- **ModuleControlFactory.cs**: Removed `.html` file handling and SpaModuleControl instantiation
-- Only Razor-based controls (via MvcControlClass) are supported
-
 ### Simplified Module Messages
 
 - **ModuleHelpers.ModuleMessage.cs**: Removed MvcClientAPI dependency
 - Auto-scroll functionality now uses inline JavaScript instead of centralized client API
 
-### Excluded Files
-
-The following files from the original MVC Pipeline were intentionally excluded:
-- SpaModuleControl.cs (SPA/HTML5 module support)
-- MvcClientAPI.cs (client-side API support)
-
 ### Added Dependency Injection Support
 
 - **Startup.cs**: Implements `IDnnStartup` for automatic service registration when the assembly loads
 - **StartupExtensions.cs**: Provides `AddMvcModuleControls()` extension method to register all `IMvcModuleControl` implementations
-- **DnnMvcWrapperDependencyResolver**: Custom `IDependencyResolver` for ASP.NET MVC that integrates with DNN's DI container
 
 These additions enable:
 - Automatic discovery and registration of all MVC module controls
@@ -152,7 +93,6 @@ These additions enable:
 
 ## Next Steps
 
-1. **Resolve NuGet issues**: Fix proxy configuration or use Visual Studio to restore packages
 2. **Build the solution**: Once packages are restored, build should succeed
 3. **Test in DNN 9.x**: Deploy the DLL to a DNN 9.x site and test functionality
 4. **Create sample module**: Build a sample module to demonstrate usage
@@ -168,8 +108,6 @@ These additions enable:
 ## Known Limitations
 
 Compared to the full DNN 10+ MVC Pipeline:
-- No SPA/HTML5 module support
-- Simplified auto-scroll (inline JavaScript vs. centralized API)
 - Requires DNN 9.x APIs only (no DNN 10+ specific features)
 
 ## Contact & Support

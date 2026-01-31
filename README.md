@@ -1,10 +1,10 @@
 # DotNetNuke.Web.MvcWrapper
 
-A standalone MVC wrapper library that backports DNN 10+ MVC Pipeline functionality to DNN 9.x installations.
+A standalone MVC wrapper library that backports MVC Pipeline functionality to DNN 9.x installations.
 
 ## Overview
 
-This library provides the core MVC wrapper infrastructure from the DNN Platform 10+ MVC Pipeline, allowing developers to create Razor-based module controls that work in DNN 9.x environments. It enables a smoother migration path for modules that want to adopt MVC patterns before upgrading to DNN 10+.
+This library provides the core MVC wrapper infrastructure from the DNN Platform 10+ MVC Pipeline, allowing developers to create Razor-based module controls that work in DNN 9.x environments. It enables a smoother migration path for modules that want to adopt MVC patterns before upgrading to MVC Pipeline.
 
 ## Features
 
@@ -75,19 +75,7 @@ namespace MyCompany.Modules.MyModule
 }
 ```
 
-2. Register the control in your module's .dnn manifest:
-
-```xml
-<moduleControl>
-  <controlKey></controlKey>
-  <controlSrc>DesktopModules/MyModule/View.html</controlSrc>
-  <controlTitle>View</controlTitle>
-  <controlType>View</controlType>
-  <mvcControlClass>MyCompany.Modules.MyModule.ViewControl, MyModule</mvcControlClass>
-</moduleControl>
-```
-
-**Note**: The `controlSrc` can point to any file (e.g., `.html`), but the actual control is instantiated via `mvcControlClass`.
+2. Register the control Wrapper in your module's .dnn manifest:
 
 ### Using the WebForms Wrapper
 
@@ -96,10 +84,9 @@ The `WrapperModule` class can be used as a wrapper control in your module:
 ```xml
 <moduleControl>
   <controlKey></controlKey>
-  <controlSrc>DesktopModules/MvcWrapper/WrapperModule.ascx</controlSrc>
+  <controlSrc>MyCompany.Modules.MyModule.ViewModuleWrapper, MyModule</controlSrc>
   <controlTitle>View</controlTitle>
   <controlType>View</controlType>
-  <mvcControlClass>MyCompany.Modules.MyModule.ViewControl, MyModule</mvcControlClass>
 </moduleControl>
 ```
 
@@ -113,6 +100,7 @@ DesktopModules/
     Views/
       View.cshtml
       Edit.cshtml
+      web.config
     MyModuleControl.cs
 ```
 
@@ -125,7 +113,7 @@ public override IRazorModuleResult Invoke()
     return View(model); // Renders View.cshtml by default
     
     // Or specify a view name
-    return View("Edit", model);
+    return View(model);
 }
 ```
 
@@ -201,26 +189,14 @@ Base class for Razor-based module controls.
 
 ## Migration Path to DNN 10+
 
-When you're ready to upgrade to DNN 10+:
+When you're ready to upgrade to DNN MVC Pipeline:
 
 1. Remove the reference to `DotNetNuke.Web.MvcWrapper`
 2. Add a reference to `DotNetNuke.Web.MvcPipeline` (included in DNN 10+)
 3. Your code should work without changes due to namespace compatibility
 4. Test thoroughly to ensure all functionality works with the native MVC Pipeline
 
-## Limitations
-
-This backport has some limitations compared to the full DNN 10+ MVC Pipeline:
-
-- **No SPA Module Support**: HTML5/SPA modules are not supported
-- **Simplified Auto-Scroll**: Module message auto-scroll uses inline JavaScript instead of the centralized client API
-- **DNN 9.x API Constraints**: Some advanced features may depend on APIs only available in DNN 10+
-
 ## Troubleshooting
-
-### Assembly Not Found
-
-Ensure `DotNetNuke.Web.MvcWrapper.dll` is in your site's `bin` folder and the application pool has been restarted.
 
 ### Views Not Found
 
@@ -229,13 +205,6 @@ Verify:
 - View file names match what you're calling (case-sensitive)
 - Views have the `.cshtml` extension
 - Views are set to "Copy to Output Directory" if using a separate project
-
-### Module Control Not Loading
-
-Check:
-- `mvcControlClass` in your .dnn manifest is correct
-- The class fully implements `RazorModuleControlBase`
-- The assembly containing your control is in the `bin` folder
 
 ## Contributing
 
@@ -247,7 +216,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Credits
 
-This library is based on the DNN Platform MVC Pipeline, originally developed for DNN Platform 10+. It has been adapted and simplified for use with DNN 9.x.
+This library is based on the DNN Platform MVC Pipeline. It has been adapted and simplified for use with DNN 9.x.
 
 ## Support
 
@@ -261,7 +230,6 @@ The library includes automatic service registration for all `IMvcModuleControl` 
 
 - **Startup.cs**: Implements `IDnnStartup` for automatic configuration
 - **StartupExtensions.cs**: Extension methods for registering MVC module controls
-- **DnnMvcWrapperDependencyResolver**: Custom MVC dependency resolver
 
 If your DNN 9.x installation supports `IDnnStartup`, service registration happens automatically. Otherwise, you can manually register services in your own startup code:
 
