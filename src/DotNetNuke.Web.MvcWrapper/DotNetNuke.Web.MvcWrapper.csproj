@@ -13,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <LangVersion>latest</LangVersion>
+    <RuntimeIdentifier>win</RuntimeIdentifier>
+    <RuntimeIdentifiers>win</RuntimeIdentifiers>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,6 +36,12 @@
     <DocumentationFile>bin\Release\DotNetNuke.Web.MvcWrapper.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetNuke">
+      <HintPath>..\..\packages\DotNetNuke.Core.9.13.9\lib\net45\DotNetNuke.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data">
+      <HintPath>..\..\packages\DotNetNuke.Core.9.13.9\lib\net45\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -50,8 +58,8 @@
     <PackageReference Include="Microsoft.AspNet.WebPages" Version="3.2.9" />
     <PackageReference Include="Microsoft.Web.Infrastructure" Version="1.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="DotNetNuke.Core" Version="9.13.2" />
-    <PackageReference Include="DotNetNuke.Web" Version="9.13.2" />
+    <PackageReference Include="DotNetNuke.Core" Version="9.13.9" />
+    <PackageReference Include="DotNetNuke.Web" Version="9.13.9" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Demo\DemoControl.cs" />

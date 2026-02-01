@@ -1,0 +1,77 @@
+<dotnetnuke type="Package" version="5.0">
+  <packages>
+    <package name="SampleViewModule" type="Module" version="1.0.0">
+      <friendlyName>Sample View Module</friendlyName>
+      <description>DNN module with a single view control using the MVC wrapper.</description>
+      <owner>
+        <name></name>
+        <organization></organization>
+        <url></url>
+        <email></email>
+      </owner>
+     
+		<azureCompatible>true</azureCompatible>
+		<dependencies>
+			<dependency type="CoreVersion">09.01.00</dependency>
+		</dependencies>
+
+		<components>
+        <component type="Module">
+          <desktopModule>
+            <moduleName>SampleViewModule</moduleName>
+            <folderName>SampleViewModule</folderName>
+            <businessControllerClass></businessControllerClass>
+            <supportedFeatures>
+              <supportedFeature type="Portable" />
+              <supportedFeature type="Searchable" />
+              <supportedFeature type="Upgradeable" />
+            </supportedFeatures>
+            <moduleDefinitions>
+              <moduleDefinition>
+                <friendlyName>Sample View Module</friendlyName>
+                <defaultCacheTime>0</defaultCacheTime>
+                <moduleControls>
+                  <moduleControl>
+                    <controlKey></controlKey>
+                    <controlSrc>SampleViewModule.ViewWrapperModule, SampleViewModule</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>View</controlTitle>
+                    <controlType>View</controlType>
+                    <iconFile></iconFile>
+                    <helpUrl></helpUrl>
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                </moduleControls>
+              </moduleDefinition>
+            </moduleDefinitions>
+          </desktopModule>
+        </component>
+        <component type="Assembly">
+          <assemblies>
+            <assembly>
+              <path>bin</path>
+              <name>SampleViewModule.dll</name>
+            </assembly>
+            <assembly>
+              <path>bin</path>
+              <name>DotNetNuke.Web.MvcWrapper.dll</name>
+            </assembly>
+          </assemblies>
+        </component>
+        <component type="File">
+          <files>
+            <basePath></basePath>
+            <file>
+              <path>DesktopModules/SampleViewModule/Views</path>
+              <name>View.cshtml</name>
+            </file>
+            <file>
+              <path>DesktopModules/SampleViewModule/Views</path>
+              <name>web.config</name>
+            </file>
+          </files>
+        </component>
+      </components>
+    </package>
+  </packages>
+</dotnetnuke>

@@ -8,7 +8,7 @@ namespace DotNetNuke.Web.MvcPipeline.Extensions
 
     using DotNetNuke.DependencyInjection.Extensions;
     using DotNetNuke.Instrumentation;
-    using DotNetNuke.Web.MvcPipeline.ModuleControl;
+    using Satrabel.Web.MvcPipeline.ModuleControl;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.DependencyInjection.Extensions;
 

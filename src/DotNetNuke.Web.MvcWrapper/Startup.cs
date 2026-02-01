@@ -2,11 +2,8 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information
 
-namespace DotNetNuke.Web.MvcPipeline
+namespace Satrabel.Web.MvcPipeline
 {
-    using System.Web.Mvc;
-
-    using DotNetNuke.Common;
     using DotNetNuke.DependencyInjection;
     using DotNetNuke.Web.MvcPipeline.Extensions;
     using Microsoft.Extensions.DependencyInjection;
@@ -30,13 +27,6 @@ namespace DotNetNuke.Web.MvcPipeline
         {
             // Register all IMvcModuleControl implementations found in loaded assemblies
             services.AddMvcModuleControls();
-
-            // Set up MVC dependency resolver to use DNN's dependency provider
-            // This allows MVC to resolve controllers and other components from the DI container
-            //if (Globals.DependencyProvider != null)
-            //{
-            //    DependencyResolver.SetResolver(new DnnMvcWrapperDependencyResolver(Globals.DependencyProvider));
-            //}
         }
     }
 }

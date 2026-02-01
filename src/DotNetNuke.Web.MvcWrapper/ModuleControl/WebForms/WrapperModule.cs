@@ -2,7 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information
 
-namespace DotNetNuke.Web.MvcPipeline.ModuleControl.WebForms
+namespace Satrabel.Web.MvcPipeline.ModuleControl.WebForms
 {
     using System;
     using System.Web.UI;
@@ -11,8 +11,8 @@ namespace DotNetNuke.Web.MvcPipeline.ModuleControl.WebForms
     using DotNetNuke.Instrumentation;
     using DotNetNuke.UI.Skins;
     using DotNetNuke.UI.Skins.Controls;
-    using DotNetNuke.Web.MvcPipeline.ModuleControl.Page;
-    using DotNetNuke.Web.MvcPipeline.Utils;
+    using Satrabel.Web.MvcPipeline.ModuleControl.Page;
+    using Satrabel.Web.MvcPipeline.Utils;
 
     /// <summary>
     /// WebForms wrapper module that hosts an MVC module control inside a classic DNN module.

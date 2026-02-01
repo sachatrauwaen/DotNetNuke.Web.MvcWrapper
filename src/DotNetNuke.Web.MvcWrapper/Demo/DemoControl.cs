@@ -1,11 +1,11 @@
-﻿using DotNetNuke.Web.MvcPipeline.ModuleControl.Razor;
+﻿using Satrabel.Web.MvcPipeline.ModuleControl.Razor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DotNetNuke.Web.MvcPipeline.ModuleControl
+namespace Satrabel.Web.MvcPipeline.ModuleControl
 {
     public class DemoControl : RazorModuleControlBase
     {

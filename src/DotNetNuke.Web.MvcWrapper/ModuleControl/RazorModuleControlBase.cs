@@ -2,7 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information
 
-namespace DotNetNuke.Web.MvcPipeline.ModuleControl
+namespace Satrabel.Web.MvcPipeline.ModuleControl
 {
     using System;
     using System.Collections.Generic;
@@ -16,8 +16,8 @@ namespace DotNetNuke.Web.MvcPipeline.ModuleControl
     using System.Web.Mvc.Html;
     using System.Web.Routing;
 
-    using DotNetNuke.Web.MvcPipeline.ModuleControl.Razor;
-    using DotNetNuke.Web.MvcPipeline.Modules;
+    using Satrabel.Web.MvcPipeline.ModuleControl.Razor;
+    using Satrabel.Web.MvcPipeline.Modules;
 
     /// <summary>
     /// Base class for Razor-based MVC module controls.
