@@ -38,15 +38,15 @@ if (Test-Path $StagingRoot) {
     Remove-Item -Recurse -Force $StagingRoot
 }
 New-Item -ItemType Directory -Path $StagingRoot -Force | Out-Null
-$WrapperObj = Join-Path $RepoRoot "src\Satrabel.Web.MvcWrapper\obj"
-if (Test-Path $WrapperObj) {
-    Remove-Item -Recurse -Force $WrapperObj
-}
+#$WrapperObj = Join-Path $RepoRoot "src\Satrabel.Web.MvcWrapper\obj"
+#if (Test-Path $WrapperObj) {
+#    Remove-Item -Recurse -Force $WrapperObj
+#}
 
 # Restore then build (Restore must see RuntimeIdentifier in project file)
-Write-Host "Restoring packages..." -ForegroundColor Cyan
-& $MsBuild $SolutionPath /t:Restore /p:Configuration=$Configuration /v:minimal
-if ($LASTEXITCODE -ne 0) { throw "Restore failed." }
+#Write-Host "Restoring packages..." -ForegroundColor Cyan
+#& $MsBuild $SolutionPath /t:Restore /p:Configuration=$Configuration /v:minimal
+#if ($LASTEXITCODE -ne 0) { throw "Restore failed." }
 
 Write-Host "Building solution ($Configuration)..." -ForegroundColor Cyan
 & $MsBuild $SolutionPath /t:Build /p:Configuration=$Configuration /v:minimal

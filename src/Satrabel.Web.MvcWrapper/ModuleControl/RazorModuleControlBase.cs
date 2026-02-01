@@ -56,7 +56,7 @@ namespace Satrabel.Web.MvcPipeline.ModuleControl
         }
 
         /// <summary>
-        /// Gets the <see cref="Http.HttpContext"/>.
+        /// Gets the <see cref="T:System.Web.HttpContextBase"/>.
         /// </summary>
         public HttpContextBase HttpContext => this.ViewContext.HttpContext;
 
