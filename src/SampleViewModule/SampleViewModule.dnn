@@ -54,7 +54,7 @@
             </assembly>
             <assembly>
               <path>bin</path>
-              <name>DotNetNuke.Web.MvcWrapper.dll</name>
+              <name>Satrabel.Web.MvcWrapper.dll</name>
             </assembly>
           </assemblies>
         </component>

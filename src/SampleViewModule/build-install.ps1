@@ -11,7 +11,7 @@ param(
 $ErrorActionPreference = "Stop"
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $RepoRoot = Split-Path -Parent (Split-Path -Parent $ScriptDir)
-$SolutionPath = Join-Path $RepoRoot "DotNetNuke.Web.MvcWrapper.sln"
+$SolutionPath = Join-Path $RepoRoot "Satrabel.Web.MvcWrapper.sln"
 $StagingRoot = Join-Path $ScriptDir "obj\install-staging"
 $ZipName = "SampleViewModule_install.zip"
 $ZipDir = if ($OutDir) { $OutDir } else { $ScriptDir }
@@ -38,7 +38,7 @@ if (Test-Path $StagingRoot) {
     Remove-Item -Recurse -Force $StagingRoot
 }
 New-Item -ItemType Directory -Path $StagingRoot -Force | Out-Null
-$WrapperObj = Join-Path $RepoRoot "src\DotNetNuke.Web.MvcWrapper\obj"
+$WrapperObj = Join-Path $RepoRoot "src\Satrabel.Web.MvcWrapper\obj"
 if (Test-Path $WrapperObj) {
     Remove-Item -Recurse -Force $WrapperObj
 }
@@ -53,7 +53,7 @@ Write-Host "Building solution ($Configuration)..." -ForegroundColor Cyan
 if ($LASTEXITCODE -ne 0) { throw "Build failed." }
 
 # Paths to built outputs
-$WrapperBin = Join-Path $RepoRoot "src\DotNetNuke.Web.MvcWrapper\bin\$Configuration"
+$WrapperBin = Join-Path $RepoRoot "src\Satrabel.Web.MvcWrapper\bin\$Configuration"
 $ModuleBin = Join-Path $ScriptDir "bin\$Configuration"
 
 # Copy manifest
@@ -63,7 +63,7 @@ Copy-Item (Join-Path $ScriptDir "SampleViewModule.dnn") -Destination $StagingRoo
 $StagingBin = Join-Path $StagingRoot "bin"
 New-Item -ItemType Directory -Path $StagingBin -Force | Out-Null
 Copy-Item (Join-Path $ModuleBin "SampleViewModule.dll") -Destination $StagingBin
-Copy-Item (Join-Path $WrapperBin "DotNetNuke.Web.MvcWrapper.dll") -Destination $StagingBin
+Copy-Item (Join-Path $WrapperBin "Satrabel.Web.MvcWrapper.dll") -Destination $StagingBin
 if (Test-Path (Join-Path $ModuleBin "SampleViewModule.pdb")) {
     Copy-Item (Join-Path $ModuleBin "SampleViewModule.pdb") -Destination $StagingBin
 }

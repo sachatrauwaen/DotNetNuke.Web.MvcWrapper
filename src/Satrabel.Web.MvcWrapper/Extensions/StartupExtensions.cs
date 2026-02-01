@@ -4,7 +4,6 @@
 
 namespace DotNetNuke.Web.MvcPipeline.Extensions
 {
-    using DotNetNuke.DependencyInjection.Extensions;
     using DotNetNuke.Framework.Reflections;
     using DotNetNuke.Instrumentation;
     using Microsoft.Extensions.DependencyInjection;
@@ -12,8 +11,6 @@ namespace DotNetNuke.Web.MvcPipeline.Extensions
     using Satrabel.Web.MvcPipeline.ModuleControl;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Web.UI;
 
     /// <summary>
     /// Adds DNN MVC module control specific startup extensions to simplify service registration.

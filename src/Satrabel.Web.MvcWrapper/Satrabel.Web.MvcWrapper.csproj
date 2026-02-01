@@ -7,8 +7,8 @@
     <ProjectGuid>{8B7F5E5A-8C3D-4F2E-9B1A-6D5E7F8A9B0C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DotNetNuke.Web.MvcPipeline</RootNamespace>
-    <AssemblyName>DotNetNuke.Web.MvcWrapper</AssemblyName>
+    <RootNamespace>Satrabel.Web.MvcPipeline</RootNamespace>
+    <AssemblyName>Satrabel.Web.MvcWrapper</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -24,7 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\DotNetNuke.Web.MvcWrapper.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\Satrabel.Web.MvcWrapper.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,13 +33,13 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\DotNetNuke.Web.MvcWrapper.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\Satrabel.Web.MvcWrapper.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNetNuke">
+    <Reference Include="DotNetNuke, Version=9.13.9.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\DotNetNuke.Core.9.13.9\lib\net45\DotNetNuke.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ApplicationBlocks.Data">
+    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\DotNetNuke.Core.9.13.9\lib\net45\Microsoft.ApplicationBlocks.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -48,18 +48,6 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="DotNetNuke.Web.Client">
-      <Version>9.13.9</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.9" />
-    <PackageReference Include="Microsoft.AspNet.Razor" Version="3.2.9" />
-    <PackageReference Include="Microsoft.AspNet.WebPages" Version="3.2.9" />
-    <PackageReference Include="Microsoft.Web.Infrastructure" Version="1.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="DotNetNuke.Core" Version="9.13.9" />
-    <PackageReference Include="DotNetNuke.Web" Version="9.13.9" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Demo\DemoControl.cs" />
@@ -88,6 +76,20 @@
     <Compile Include="Modules\ModuleMessageType.cs" />
     <Compile Include="Extensions\StartupExtensions.cs" />
     <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DotNetNuke.DependencyInjection">
+      <Version>9.13.9</Version>
+    </PackageReference>
+    <PackageReference Include="DotNetNuke.Instrumentation">
+      <Version>9.13.9</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNet.Mvc">
+      <Version>5.2.9</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection">
+      <Version>2.1.1</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
