@@ -49,6 +49,7 @@ namespace Satrabel.Web.MvcPipeline.ModuleControl.WebForms
             try
             {
                 var moduleControl = CreateModuleControl(this.ModuleConfiguration);
+                moduleControl.ModuleContext.Configuration = this.ModuleConfiguration;
 
                 if (moduleControl is IActionable actionable)
                 {

@@ -19,7 +19,7 @@
         <component type="Module">
           <desktopModule>
             <moduleName>SampleViewModule</moduleName>
-            <folderName>SampleViewModule</folderName>
+            <foldername>SampleViewModule</foldername>
             <businessControllerClass></businessControllerClass>
             <supportedFeatures>
               <supportedFeature type="Portable" />

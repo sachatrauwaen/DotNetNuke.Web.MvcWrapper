@@ -4,13 +4,16 @@
 
 namespace DotNetNuke.Web.MvcPipeline.Extensions
 {
-    using System.Linq;
-
     using DotNetNuke.DependencyInjection.Extensions;
+    using DotNetNuke.Framework.Reflections;
     using DotNetNuke.Instrumentation;
-    using Satrabel.Web.MvcPipeline.ModuleControl;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.DependencyInjection.Extensions;
+    using Satrabel.Web.MvcPipeline.ModuleControl;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web.UI;
 
     /// <summary>
     /// Adds DNN MVC module control specific startup extensions to simplify service registration.
@@ -29,19 +32,33 @@ namespace DotNetNuke.Web.MvcPipeline.Extensions
         /// </remarks>
         public static void AddMvcModuleControls(this IServiceCollection services)
         {
+#if DNN10
             var allTypes = TypeExtensions.SafeGetTypes();
+
             allTypes.LogOtherExceptions(Logger);
 
             var mvcControlTypes = allTypes.Types
                 .Where(
                     type => typeof(IMvcModuleControl).IsAssignableFrom(type) &&
                             type is { IsClass: true, IsAbstract: false });
-            
+#else
+            var typeLocator = new TypeLocator();
+            IEnumerable<Type> mvcControlTypes = typeLocator.GetAllMatchingTypes(IsValidModuleControl);
+
+#endif
             foreach (var controller in mvcControlTypes)
             {
                 services.TryAddTransient(controller);
                 Logger.Trace($"Registered MVC Module Control: {controller.FullName}");
             }
+        }
+
+        private static bool IsValidModuleControl(Type t)
+        {
+            return t != null &&
+                    t.IsClass && 
+                    !t.IsAbstract &&
+                    t.IsVisible && typeof(IMvcModuleControl).IsAssignableFrom(t);
         }
     }
 }
